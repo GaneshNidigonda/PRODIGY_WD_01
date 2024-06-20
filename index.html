@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interactive Navigation Menu</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #eee;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-item {
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #007bff;
+}
+
+.nav-container.scrolled {
+  background-color: #ddd;
+}
+</style>
+</head>
+<body>
+  <div class="nav-container">
+    <ul class="nav-list">
+      <li class="nav-item">Home</li>
+      <li class="nav-item">About</li>
+      <li class="nav-item">Services</li>
+      <li class="nav-item">Contact</li>
+    </ul>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const navContainer = document.querySelector('.nav-container');
+      if (window.scrollY > 0) {
+        navContainer.classList.add('scrolled');
+      } else {
+        navContainer.classList.remove('scrolled');
+      }
+    });
+
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        item.style.color = '#007bff';
+      });
+      item.addEventListener('mouseout', () => {
+        item.style.color = '#333';
+      });
+    });
+  </script>
+</body>
+</html>
